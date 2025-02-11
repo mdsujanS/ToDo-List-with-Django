@@ -1,0 +1,7 @@
+<h1>Detele a Task </h1>
+<form action="" method='post'>
+    {% csrf_token %}
+    <p>Are you sure you wanna detele this task- {{tasks.title}}</p>
+    <input type="submit" value="Yes, Delete">
+</form>
+<a href="{% url 'task-list' %}">No, Go back</a>
