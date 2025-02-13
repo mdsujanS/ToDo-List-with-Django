@@ -1,6 +1,10 @@
 {% if request.user.is_authenticated %}
     <p>{{ request.user }}</p>
-    <a href="{% url 'logout' %}">Logout</a>
+    <form action="{% url 'logout' %}" method='post'>
+        {% csrf_token %}
+        <input type="submit" value='Logout'>
+    </form>
+    {% comment %} <a href="{% url 'logout' %}">Logout</a> {% endcomment %}
 {% else %}
     <a href="{% url 'login' %}"> Login </a>
 {% endif %}
@@ -23,7 +27,7 @@
 
     {% empty %}
     <h3>No items in list</h3>
-    <a href="#">Add new Items</a>
+    <a href="#">Add new Task</a>
 
     {% endfor %}
 </table>
